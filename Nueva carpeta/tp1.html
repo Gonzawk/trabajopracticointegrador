@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+     codArt = []
+     nomArt = []
+     cat    = []
+     depNum = []
+     cant   = []
+
+
+
+     Cargar()
+
+
+     function Cargar()
+     {
+        for(i=0;i<3;i++)
+        {
+            cod = prompt('Codigo de Articulo: ');
+            nom = prompt('Nombre de Articulo: ');
+            ca  = prompt('Categoria: ');
+            d   = prompt('Deposito numero: ');
+            c   = prompt('Cantidad: ');
+
+
+            codArt[i] = parseInt(cod);
+            nomArt[i] = nom;
+            cat[i]    = ca;
+            depNum[i] = parseInt(d);
+            cant[i]   = parseInt(c);
+
+        }
+     }
+    
+     console.log(codArt, nomArt,cat, depNum, cant)
+
+    </script>
+</body>
+</html>

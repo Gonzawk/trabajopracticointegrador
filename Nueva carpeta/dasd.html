@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+
+
+
+// Definir las variables para almacenar los datos
+var productos = [];
+var cantidadTotal = 0;
+var cantidadDepositos = {
+  deposito1: 0,
+  deposito2: 0
+};
+var cantidadCategorias = {
+  categoria1: 0,
+  categoria2: 0
+};
+var cantidadDepositoCategoria = {
+  deposito1: {
+    categoria1: 0,
+    categoria2: 0
+  },
+  deposito2: {
+    categoria1: 0,
+    categoria2: 0
+  }
+};
+
+// Función para ingresar un nuevo artículo
+function ingresarArticulo(codigo, nombre, categoria, deposito, cantidad) {
+  // Crear un objeto artículo con los datos proporcionados
+  var articulo = {
+    codigo: codigo,
+    nombre: nombre,
+    categoria: categoria,
+    deposito: deposito,
+    cantidad: cantidad
+  };
+  
+  // Agregar el artículo a la lista de productos
+  productos.push(articulo);
+  
+  // Actualizar las estadísticas
+  cantidadTotal += cantidad;
+  cantidadDepositos[deposito] += cantidad;
+  cantidadCategorias[categoria] += cantidad;
+  cantidadDepositoCategoria[deposito][categoria] += cantidad;
+}
+
+// Función para calcular el promedio total de productos
+function calcularPromedioTotal() {
+  var promedio = cantidadTotal / productos.length;
+  return promedio.toFixed(2); // Redondear el promedio a 2 decimales
+}
+
+// Ejemplo de uso:
+
+// Ingresar artículos de muestra
+ingresarArticulo("001", "Producto 1", "categoria1", "deposito1", 10);
+ingresarArticulo("002", "Producto 2", "categoria2", "deposito2", 5);
+ingresarArticulo("003", "Producto 3", "categoria1", "deposito1", 8);
+
+// Mostrar las estadísticas
+console.log("Cantidad total de productos: " + cantidadTotal);
+console.log("Cantidad total de productos por depósitos:", cantidadDepositos);
+console.log("Cantidad total de productos por categoría:", cantidadCategorias);
+console.log("Cantidad total por depósito y categoría:", cantidadDepositoCategoria);
+console.log("Promedio total de productos: " + calcularPromedioTotal());
+
+    </script>
+    
+</body>
+</html>

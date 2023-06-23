@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="styles/page.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/table.css">
+    <link rel="stylesheet" href="styles/form.css">
+
+
+</head>
+
+<body>
+
+    <div class="content">
+
+        <header>
+            <img src="img/logoCervantes.png" alt="Institucion Cervantes">
+
+        </header>
+
+        <Aside>
+    
+
+            <p>
+                Programación I <br> Trabajo Integrador
+            </p>
+
+            <h5>Prof. Barrionuevo Mario Cesar</h5>
+
+            <br>
+
+            <h5> Gonzalo Paz </h5>
+
+        </Aside>
+
+        <Main>
+            <section>
+                <h4>LISTADO</h4>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Codigo de articulo</th>
+                            <th>Nombre de articulo</th>
+                            <th>Categoria</th>
+                            <th>Deposito numero</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+
+                    </tbody>
+
+                </table>
+
+             
+
+
+            </section>
+
+            <section>
+                <h4>Estadisticas</h4>
+
+                <p id="estadisticas"></p>
+                
+            </section>
+
+
+
+
+        </Main>
+
+        <footer>
+            <h5>Institucion Cervantes - Analista de Sistema</h5>
+        </footer>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script>
+
+        codArt = []
+        nomArt = []
+        cat    = []
+        depNum = []
+        cant   = []
+   
+   
+       deposito1 = 0
+       deposito2 = 0
+
+
+        Cargar()
+        Listar()
+        verEstadisticas()
+
+   
+        function Cargar()
+        {
+           for(i=0;i<4;i++)
+           {
+               cod = prompt('Codigo de Articulo: ');
+               nom = prompt('Nombre de Articulo: ');
+               ca  = prompt('Categoria A o B: ');
+               d   = prompt('Deposito numero 1 o 2: ');
+               c   = prompt('Cantidad: ');
+   
+   
+               codArt[i] = parseInt(cod);
+               nomArt[i] = nom;
+               cat[i]    = ca;
+               depNum[i] = parseInt(d);
+               cant[i]   = parseInt(c);
+   
+           }
+        }
+       
+
+        function Listar()
+        {
+
+           const _tbody = document.querySelector('tbody')
+
+            for(i=0;i<codArt.length;i++)
+            {
+              _tbody.innerHTML += `<tr>
+                           <td>${codArt[i]}</td>
+                           <td>${nomArt[i]}</td>
+                           <td>${cat[i]}</td>
+                           <td>${depNum[i]}</td>
+                           <td>${cant[i]}</td>
+                                   </tr>`
+            }
+        }
+   
+
+
+
+
+
+        function verEstadisticas()
+        {
+             acumProductos = 0
+
+             cantDeposito1 = 0
+             cantDeposito2 = 0
+
+            for(i=0;i<codArt.length;i++)
+            {
+            
+                acumProductos += cant[i]
+                
+
+            }
+
+
+            for(i=0;i<codArt.length;i++)
+            {
+                if(cant[i] = 1)
+                {
+                    cantDeposito1 += 1
+                }
+                cantDeposito2 += 1
+
+            }
+          
+
+
+
+            const _pEstadistica = document.getElementById('estadisticas')
+
+            _pEstadistica.innerHTML = `Cantidad total de productos: ${acumProductos} <br> <br>
+                                       Cantidad de productos deposito 1: ${cantDeposito1} <br>
+                                       Cantidad de productos deposito 2: ${cantDeposito2}`
+
+        }
+       </script>
+
+</body>
+
+
+
+</html>
